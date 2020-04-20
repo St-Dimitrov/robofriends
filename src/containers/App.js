@@ -3,6 +3,8 @@ import CardList from '../components/CardList';
 import SearchBox from '../components/SearchBox';
 import Scroll from '../components/Scroll';
 import './App.css';
+import '../components/ErrorBoundry';
+import ErrorBoundry from '../components/ErrorBoundry';
 
 class App extends Component { // # loading with empry arr robots
   constructor() {
@@ -31,11 +33,13 @@ class App extends Component { // # loading with empry arr robots
     return !robots.length ? // ## with the rendering of the empty arr. before we fetch the users with componentDidMount - using cleaner sintax from [if (robots.length === 0) return]
       <h1>Loading</h1> :
       ( //## else rerurn this
-        <div className='tc'> 
+        <div className='tc'>
           <h1 className='f1'>RoboFriends</h1>
           <SearchBox searchChange={this.onSearchChange} />
-          <Scroll> 
-            <CardList robots={filteredRobots} />
+          <Scroll>
+            <ErrorBoundry>
+              <CardList robots={filteredRobots} />
+            </ErrorBoundry>
           </Scroll>
         </div>
       );
