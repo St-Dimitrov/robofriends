@@ -36,11 +36,9 @@ class App extends Component { // # loading with empry arr robots
         <div className='tc'>
           <h1 className='f1'>RoboFriends</h1>
           <SearchBox searchChange={this.onSearchChange} />
-          <Scroll>
             <ErrorBoundry>
               <CardList robots={filteredRobots} />
             </ErrorBoundry>
-          </Scroll>
         </div>
       );
   }
